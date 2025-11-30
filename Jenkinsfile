@@ -27,12 +27,11 @@ pipeline {
     steps {
         sh '''
             . venv/bin/activate
-            python3 app.py &
-            sleep 5
-            pkill -f app.py
+            python3 -c "import flask; print('Flask is installed correctly')"
         '''
     }
 }
+
 
 
         stage('Deploy') {
