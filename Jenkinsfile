@@ -23,6 +23,17 @@ pipeline {
                 echo 'No tests yet, skipping...'
             }
         }
+        stage('Test Flask') {
+    steps {
+        sh '''
+            . venv/bin/activate
+            python3 app.py &
+            sleep 5
+            pkill -f app.py
+        '''
+    }
+}
+
 
         stage('Deploy') {
             steps {
